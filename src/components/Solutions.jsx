@@ -1,4 +1,4 @@
-import { BrainCircuit, Globe, Workflow, ArrowUpRight } from 'lucide-react'
+import { Database, Globe, Workflow, ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 /* Shared card style object */
@@ -63,7 +63,7 @@ export default function Solutions() {
                 {/* ── Bento Grid ───────────────────────────────────────── */}
                 <div className="bento-grid">
 
-                    {/* ── Card 1: Marketing con IA (2 cols) ── */}
+                    {/* ── Card 1: Sistemas de Automatización (2 cols) ── */}
                     <motion.div
                         className="bento-col-2"
                         style={{ ...S.card, transition: 'border-color .3s, transform .3s, box-shadow .3s' }}
@@ -77,25 +77,23 @@ export default function Solutions() {
                         {/* Top: badge + icon */}
                         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                             <div>
-                                <p className="label" style={{ ...S.label, color: '#00E0FF', marginBottom: '0.5rem' }}>Presencia Multiplicada</p>
-                                <h3 style={S.title}>Máquina de Contenido Inagotable</h3>
+                                <p className="label" style={{ ...S.label, color: '#00E0FF', marginBottom: '0.5rem' }}>OPERACIONES EFICIENTES</p>
+                                <h3 style={S.title}>Sistemas de Gestión y Automatización a Medida</h3>
                             </div>
                             <div className="icon-box" style={{ background: 'rgba(0,224,255,0.08)', borderColor: 'rgba(0,224,255,0.2)' }}>
-                                <BrainCircuit size={20} color="#00E0FF" strokeWidth={1.75} />
+                                <Database size={20} color="#00E0FF" strokeWidth={1.75} />
                             </div>
                         </div>
 
                         {/* Body */}
                         <p style={{ ...S.body, maxWidth: '420px' }}>
-                            Olvídate de pensar qué publicar. Creamos un sistema inteligente que genera, diseña y
-                            distribuye contenido de alto impacto para tu marca. Tu empresa activa y atrayendo
-                            clientes 24/7{' '}
-                            <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>sin pagar una agencia entera.</span>
+                            Dejamos atrás las hojas de cálculo manuales. Construimos sistemas inteligentes que controlan tu inventario, envían alertas automáticas por WhatsApp y registran ventas en tiempo real{' '}
+                            <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>sin intervención humana. Tu negocio operando en piloto automático.</span>
                         </p>
 
                         {/* Stats */}
                         <div style={{ display: 'flex', gap: '2.5rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                            {[['24/7', 'Operación'], ['10×', 'Velocidad'], ['$0', 'Costo extra']].map(([v, l]) => (
+                            {[['100%', 'Precisión de datos'], ['-80%', 'Tiempo manual'], ['24/7', 'Monitoreo activo']].map(([v, l]) => (
                                 <div key={l}>
                                     <div className="grad-text" style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.04em' }}>{v}</div>
                                     <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>{l}</div>
@@ -117,7 +115,7 @@ export default function Solutions() {
                         <div className="icon-box" style={{ background: 'rgba(139,92,246,0.08)', borderColor: 'rgba(139,92,246,0.2)', marginBottom: '1.25rem' }}>
                             <Globe size={20} color="#8B5CF6" strokeWidth={1.75} />
                         </div>
-                        <p className="label" style={{ ...S.label, color: 'rgba(255,255,255,0.3)', marginBottom: '0.4rem' }}>Conversión Acelerada</p>
+                        <p className="label" style={{ ...S.label, color: 'rgba(255,255,255,0.3)', marginBottom: '0.4rem' }}>CONVERSIÓN ACELERADA</p>
                         <h3 style={{ ...S.title, marginBottom: '0.875rem' }}>Tu Mejor Vendedor Digital</h3>
                         <p style={S.body}>
                             No hacemos «páginas web» genéricas. Construimos plataformas de ultra-alta velocidad
@@ -144,7 +142,7 @@ export default function Solutions() {
                             <Workflow size={20} color="#818CF8" strokeWidth={1.75} />
                         </div>
                         <div style={{ flex: 1, minWidth: '240px' }}>
-                            <p className="label" style={{ ...S.label, color: 'rgba(255,255,255,0.3)', marginBottom: '0.4rem' }}>Cero Tareas Manuales</p>
+                            <p className="label" style={{ ...S.label, color: 'rgba(255,255,255,0.3)', marginBottom: '0.4rem' }}>CERO TAREAS MANUALES</p>
                             <h3 style={{ ...S.title, marginBottom: '0.6rem' }}>El Cerebro de tu Operación</h3>
                             <p style={S.body}>
                                 Conectamos tus herramientas para que hablen entre sí. Imagina que un cliente paga y automáticamente
