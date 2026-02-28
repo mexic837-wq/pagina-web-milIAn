@@ -726,8 +726,30 @@ body {
 
   /* ── Navbar: tighter padding & gap ── */
   .navbar-inner {
-    padding: 0.875rem 0.5rem;
-    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+    gap: 0.35rem;
+    /* much less gap between logo and right side */
+  }
+
+  .nav-right {
+    gap: 0.5rem !important;
+    /* tighter gap between 'Sobre Nosotros' and button */
+  }
+
+  .nav-link {
+    font-size: 0.75rem !important;
+  }
+
+  .nav-cta {
+    padding: 0.45rem 0.75rem !important;
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+    gap: 4px !important;
+  }
+
+  .nav-cta svg {
+    width: 14px;
+    height: 14px;
   }
 
   /* ── Footer: vertical stack ── */

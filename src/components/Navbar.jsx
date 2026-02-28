@@ -23,14 +23,14 @@ export default function Navbar({ openScanner, openAbout }) {
                         src="/logo-millan-nuevo.png"
                         alt="milIAn"
                         style={{
-                            height: 'clamp(30px, 7vw, 38px)',
+                            height: 'clamp(28px, 6vw, 38px)',
                             width: 'auto',
                             objectFit: 'contain',
                             display: 'block',
                         }}
                     />
                     <span style={{
-                        fontSize: 'clamp(1.05rem, 2.8vw, 1.25rem)',
+                        fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                         fontWeight: 700,
                         color: '#ffffff',
                         fontFamily: 'Space Grotesk, sans-serif',
@@ -42,9 +42,10 @@ export default function Navbar({ openScanner, openAbout }) {
                 </a>
 
                 {/* Right side: nav link + CTA */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
                     <a
                         href="#"
+                        className="nav-link"
                         onClick={(e) => { e.preventDefault(); openAbout() }}
                         style={{
                             fontSize: '0.875rem',
@@ -64,7 +65,7 @@ export default function Navbar({ openScanner, openAbout }) {
 
                     <motion.button
                         id="nav-cta"
-                        className="btn"
+                        className="btn nav-cta"
                         onClick={openScanner}
                         style={{ padding: '0.6rem 1.25rem', fontSize: '0.875rem', borderRadius: '0.625rem' }}
                         whileHover={{ scale: 1.05 }}
