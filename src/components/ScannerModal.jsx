@@ -140,6 +140,23 @@ export default function ScannerModal({ isOpen, onClose }) {
         }
     }, [isOpen])
 
+    /* Load Calendly script when entering success step */
+    useEffect(() => {
+        if (step === STEP_SUCCESS) {
+            const script = document.createElement('script')
+            script.src = 'https://assets.calendly.com/assets/external/widget.js'
+            script.async = true
+            document.body.appendChild(script)
+
+            return () => {
+                // Cleanup safely
+                if (document.body.contains(script)) {
+                    document.body.removeChild(script)
+                }
+            }
+        }
+    }, [step])
+
     const handleKey = useCallback(e => { if (e.key === 'Escape') onClose() }, [onClose])
     useEffect(() => {
         window.addEventListener('keydown', handleKey)
@@ -277,33 +294,24 @@ export default function ScannerModal({ isOpen, onClose }) {
 
                     {/* ════════ SUCCESS ════════ */}
                     {step === STEP_SUCCESS && (
-                        <div className="scanner-success">
-                            <div className="scanner-success-icon">
-                                <CheckCircle2 size={48} strokeWidth={1.5} />
-                            </div>
-                            <h2 className="scanner-success-title">¡Diagnóstico completado!</h2>
-                            <p style={{ fontSize: '1.0625rem', color: 'rgba(255,255,255,0.6)', marginBottom: '1.75rem', lineHeight: 1.6 }}>
-                                Tu empresa tiene un alto potencial de automatización.
-                            </p>
-
-                            {/* ── Paso 1 ── */}
-                            <p style={{ fontSize: '0.9375rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: '1rem', textAlign: 'center' }}>
-                                <strong style={{ color: '#fff' }}>Paso 1:</strong> Agenda tu Reunión de Diagnóstico aquí abajo para trazar el mapa de ruta. 👇
-                            </p>
-                            <a href="#" id="scanner-calendly-cta">
-                                <button className="btn scanner-success-btn">
-                                    <Calendar size={18} />
-                                    Agendar Reunión de Diagnóstico
-                                </button>
-                            </a>
-                            <p className="scanner-fine-print">Sesión gratuita de 30 min · Sin compromiso</p>
-
-                            {/* ── Paso 2 ── */}
-                            <div style={{ marginTop: '1.75rem', padding: '1.25rem', borderRadius: '0.75rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                                <p style={{ fontSize: '0.9375rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, textAlign: 'center' }}>
-                                    <strong style={{ color: '#fff' }}>Paso 2:</strong> Revisa tu WhatsApp. Nuestro Equipo, te acaba de enviar un cálculo personalizado sobre tus ineficiencias operativas.
+                        <div className="scanner-success" style={{ padding: '0' }}>
+                            <div style={{ marginBottom: '1.5rem', marginTop: '-0.5rem', textAlign: 'center' }}>
+                                <div className="scanner-success-icon" style={{ margin: '0 auto 1rem', width: 64, height: 64 }}>
+                                    <CheckCircle2 size={32} strokeWidth={1.5} />
+                                </div>
+                                <h2 className="scanner-success-title" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>¡Datos recibidos!</h2>
+                                <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>
+                                    Tu empresa tiene un alto potencial de automatización.<br />
+                                    <strong>Por favor, elige el día y la hora para nuestra sesión estratégica.</strong>
                                 </p>
                             </div>
+
+                            {/* Calendly Inline Widget */}
+                            <div
+                                className="calendly-inline-widget"
+                                data-url="https://calendly.com/mexic837?hide_landing_page_details=1&background_color=0a0a0a&text_color=ffffff&primary_color=00e0ff"
+                                style={{ minWidth: '320px', height: '640px', width: '100%', borderRadius: '0.75rem', overflow: 'hidden' }}
+                            ></div>
                         </div>
                     )}
 
