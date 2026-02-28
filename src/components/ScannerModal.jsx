@@ -140,22 +140,36 @@ export default function ScannerModal({ isOpen, onClose }) {
         }
     }, [isOpen])
 
-    /* Load Calendly script when entering success step */
+    /* Load Calendly script and initialize widget when entering success step */
     useEffect(() => {
         if (step === STEP_SUCCESS) {
             const script = document.createElement('script')
             script.src = 'https://assets.calendly.com/assets/external/widget.js'
             script.async = true
-            document.body.appendChild(script)
+
+            script.onload = () => {
+                if (window.Calendly) {
+                    window.Calendly.initInlineWidget({
+                        url: 'https://calendly.com/mexic837?hide_landing_page_details=1&background_color=0a0a0a&text_color=ffffff&primary_color=00e0ff',
+                        parentElement: document.getElementById('calendly-container'),
+                        prefill: {
+                            name: nombre,
+                            email: email
+                        }
+                    })
+                }
+            }
+
+            document.head.appendChild(script)
 
             return () => {
                 // Cleanup safely
-                if (document.body.contains(script)) {
-                    document.body.removeChild(script)
+                if (document.head.contains(script)) {
+                    document.head.removeChild(script)
                 }
             }
         }
-    }, [step])
+    }, [step, nombre, email])
 
     const handleKey = useCallback(e => { if (e.key === 'Escape') onClose() }, [onClose])
     useEffect(() => {
@@ -306,10 +320,9 @@ export default function ScannerModal({ isOpen, onClose }) {
                                 </p>
                             </div>
 
-                            {/* Calendly Inline Widget */}
+                            {/* Calendly Inline Widget Container */}
                             <div
-                                className="calendly-inline-widget"
-                                data-url="https://calendly.com/mexic837?hide_landing_page_details=1&background_color=0a0a0a&text_color=ffffff&primary_color=00e0ff"
+                                id="calendly-container"
                                 style={{ minWidth: '320px', height: '640px', width: '100%', borderRadius: '0.75rem', overflow: 'hidden' }}
                             ></div>
                         </div>
